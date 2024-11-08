@@ -52,7 +52,35 @@ def delete_todo_items():
     
     print(f"{deleted_item['title']} is deleted Permanently")
  
-     
+
+
+def update_todo_list():
+    show_todo_list()
+    
+    if not todo_list:
+        print("Todo list is empty...! \n")
+        
+    index = int(input("Enter choice to update the Todo List : ")) - 1
+    
+    current_item = todo_list[index]
+    
+    print(f"selected item to update is : ({current_item['title']})")
+    
+    new_title = input("update the title (leave blank not to update title) : ")
+    new_desc = input("update the description (leave blank not to update description) : ")
+    
+    if new_title:
+        current_item['title'] = new_title
+        
+    if new_desc:
+        current_item['description'] = new_desc
+        
+    print("To-do item updated successfully!")
+    
+    
+    
+    
+
      
     
 
@@ -60,8 +88,8 @@ while True:
     print("1: Add To-Do List \n")
     print("2: Show All To-Do Lists \n")
     print("3: Delete Todo List \n")
-    
-    print("4: Exit \n")
+    print("4: Update Existing List \n")
+    print("5: Exit \n")
 
     choice = input("> ")
 
@@ -75,6 +103,9 @@ while True:
         os.system("cls")
         delete_todo_items()
     elif choice == "4":
+        os.system("cls")
+        update_todo_list()
+    elif choice == "5":
         os.system("cls")
         print("Exiting...")
         break
